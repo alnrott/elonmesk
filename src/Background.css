@@ -4,18 +4,23 @@ html {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
+
+
 #title {
+    margin-top: 40px;
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
     color: #fff;
     text-align: center;
-    font-family: Lato;
-    font-weight: 300;
+    font-family: Kids;
+    font-weight: 1000;
     font-size: 50px;
     letter-spacing: 10px;
-    margin-top: -60px;
     padding-left: 10px;
 }
 
@@ -24,6 +29,8 @@ html {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
 
 #stars {
     width: 1px;
@@ -639,6 +646,18 @@ html {
     z-index: 1;
 }
 
+#mesk-mobile {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40vh;
+    background: url('./mesk-mobile.png') no-repeat center bottom;
+    background-size: contain;
+    z-index: 1;
+    display: none;
+}
+
 
 .cursor-dot,
 .cursor-outline {
@@ -664,5 +683,35 @@ html {
 
     to {
         transform: translateY(-2000px);
+    }
+}
+
+@media (max-width: 1000px) {
+
+    #title {
+        margin-top: 0px;
+        background: -webkit-linear-gradient(white, #38495a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        color: #fff;
+        text-align: center;
+        font-family: Kids;
+        font-weight: 1000;
+        font-size: 50px;
+    }
+
+    #mesk-mobile {
+        display: block;
+    }
+
+    #mesk,
+    .trail,
+    .cursor-dot {
+        display: none;
+    }
+
+    #title {
+        display: block;
     }
 }

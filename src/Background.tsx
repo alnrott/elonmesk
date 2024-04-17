@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Background.css';
+import Questens from './components/questens';
+import Dament from './components/dament';
 
 type Dot = {
     left: number;
@@ -12,6 +14,19 @@ const Background: React.FC = () => {
     const [dots, setDots] = useState<Dot[]>([]);
     const cursorDotRef = useRef<HTMLDivElement | null>(null);
     const cursorOutlineRef = useRef<HTMLDivElement | null>(null);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalType, setModalType] = useState(null);
+
+    const openModal = (type: any) => {
+        setModalType(type);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setModalType(null);
+    };
+
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -58,20 +73,35 @@ const Background: React.FC = () => {
     return (
         <>
             <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
-            <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
-            <div id='title'>
+            <div className='responsive'>
+                <div id='stars'></div>
+                <div id='stars2'></div>
+                <div id='stars3'></div>
+                <div id='title'>
+                    <h1>MESK</h1>
 
-                <span>
-                    ELOWN MOOSK                </span>
+                    {/* <span>
+                    ELOWN MOOSK                </span> */}
+                </div>
+
+                <div className="cursor-outline" ref={cursorOutlineRef} data-cursor-outline></div>
+                <div className='box'>
+                    <div className='eye'></div>
+                    <div className='eye'></div>
+                </div>
             </div>
-            <div className="cursor-outline" ref={cursorOutlineRef} data-cursor-outline></div>
-            <div className='box'>
-                <div className='eye'></div>
-                <div className='eye'></div>
+            <div className="video-frame">
+
             </div>
+            <div className="mint">
+                <button className="glow-on-hover" type="button" onClick={() => openModal('dament')}>da ment</button>
+                <button className="glow-on-hover" type="button" >X</button>
+                <button className="glow-on-hover" type="button" onClick={() => openModal('questens')}>questens</button>
+            </div>
+            {modalOpen && modalType === 'questens' && <Questens onClose={closeModal} />}
+            {modalOpen && modalType === 'dament' && <Dament onClose={closeModal} />}
             <div id='mesk'></div>
+            <div id='mesk-mobile'></div>
         </>
     );
 };
