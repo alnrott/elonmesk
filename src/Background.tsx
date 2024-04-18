@@ -123,7 +123,7 @@ const Background: React.FC = () => {
             </div>
             <div className="mint">
                 <button className="glow-on-hover" type="button" onClick={() => openModal('dament')}>da ment</button>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://twitter.com/MOOSKNFT" target="_blank" rel="noopener noreferrer">
                     <button className="glow-on-hover" type="button">X</button>
                 </a>
                 <button className="glow-on-hover" type="button" onClick={() => openModal('questens')}>questens</button>
