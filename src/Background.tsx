@@ -132,7 +132,6 @@ const Background: React.FC = () => {
             <span style={{ position: 'absolute', top: 100, right: 20, color: 'white', fontSize: "40px", fontWeight: '900', padding: '5px' }}>TOCH ME</span>
             </div>
             <div id='mesk-mobile'>
-            <span style={{ position: 'absolute', top: 80, left: 20, color: 'white', fontSize: "20px", fontWeight: '900', padding: '5px' }}>TOCH ME</span>
             </div>
         </>
     );
