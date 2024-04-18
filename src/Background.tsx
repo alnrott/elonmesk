@@ -2,20 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Background.css';
 import Questens from './components/questens';
 import Dament from './components/dament';
+const sound1 = require('./assets/sound1.mp3');
+const sound2 = require('./assets/sound2.mp3');
+const sound3 = require('./assets/sound3.mp3');
 
-type Dot = {
-    left: number;
-    top: number;
-    opacity: number;
-    id: string;
-};
+const sounds = [sound1, sound2, sound3];
 
 const Background: React.FC = () => {
-    const [dots, setDots] = useState<Dot[]>([]);
     const cursorDotRef = useRef<HTMLDivElement | null>(null);
     const cursorOutlineRef = useRef<HTMLDivElement | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalType, setModalType] = useState(null);
+    const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
+    const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
 
     const openModal = (type: any) => {
         setModalType(type);
@@ -25,6 +24,34 @@ const Background: React.FC = () => {
     const closeModal = () => {
         setModalOpen(false);
         setModalType(null);
+    };
+
+
+    const playSound = () => {
+        if (!audioElement) {
+            const audio = new Audio(sounds[currentSoundIndex]);
+            setAudioElement(audio);
+            audio.play();
+            audio.onended = () => {
+                setAudioElement(null);
+            };
+        } else {
+            if (audioElement.paused) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+                setAudioElement(null);
+            }
+        }
+    };
+
+    const handleClick = () => {
+        if (audioElement && !audioElement.paused) {
+            audioElement.pause();
+        } else {
+            playSound();
+            setCurrentSoundIndex((prevIndex) => (prevIndex + 1) % sounds.length);
+        }
     };
 
 
@@ -78,10 +105,8 @@ const Background: React.FC = () => {
                 <div id='stars2'></div>
                 <div id='stars3'></div>
                 <div id='title'>
-                    <h1>MESK</h1>
+                    <h1>MOOSK</h1>
 
-                    {/* <span>
-                    ELOWN MOOSK                </span> */}
                 </div>
 
                 <div className="cursor-outline" ref={cursorOutlineRef} data-cursor-outline></div>
@@ -91,7 +116,10 @@ const Background: React.FC = () => {
                 </div>
             </div>
             <div className="video-frame">
-
+                <video width="100%" height="100%" controls>
+                    <source src="elon.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
             <div className="mint">
                 <button className="glow-on-hover" type="button" onClick={() => openModal('dament')}>da ment</button>
@@ -100,7 +128,7 @@ const Background: React.FC = () => {
             </div>
             {modalOpen && modalType === 'questens' && <Questens onClose={closeModal} />}
             {modalOpen && modalType === 'dament' && <Dament onClose={closeModal} />}
-            <div id='mesk'></div>
+            <div id='mesk' onClick={handleClick}></div>
             <div id='mesk-mobile'></div>
         </>
     );

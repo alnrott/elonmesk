@@ -10,15 +10,14 @@
 .video-frame {
   margin-top: 20px;
   margin-inline: auto;
-  border: 2px solid #ccc; /* Color y grosor del borde */
-  padding: 20px; /* Espacio alrededor del componente */
+  padding: 20px;
   height: 420px;
   width: 780px;
-  /* Otros estilos de diseño según sea necesario */
 }
 
 .mint {
-  margin-top: 200px;
+  margin-top: 10vh;
+  display: block;
   color: #000;
 }
 
@@ -50,7 +49,7 @@
 
 .glow-on-hover {
   font-family: Kids;
-  font-size:xx-large;
+  font-size: xx-large;
   margin-inline: 50px;
   margin-top: 20px;
   width: 220px;
@@ -70,7 +69,7 @@
   background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
   position: absolute;
   top: -2px;
-  left:-2px;
+  left: -2px;
   background-size: 400%;
   z-index: -1;
   filter: blur(5px);
@@ -107,9 +106,17 @@
 }
 
 @keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -127,7 +134,7 @@
     width: 70%;
     margin-bottom: -200px;
 
-}
+  }
 }
 
 @keyframes App-logo-spin {

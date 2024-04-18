@@ -10,6 +10,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: url('./mesk.png'), auto;
+
+}
+
+html {
+  height: 1000vh;
 }
 
 code {
