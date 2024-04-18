@@ -123,13 +123,15 @@ const Background: React.FC = () => {
             </div>
             <div className="mint">
                 <button className="glow-on-hover" type="button" onClick={() => openModal('dament')}>da ment</button>
-                <button className="glow-on-hover" type="button" >X</button>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                    <button className="glow-on-hover" type="button">X</button>
+                </a>
                 <button className="glow-on-hover" type="button" onClick={() => openModal('questens')}>questens</button>
             </div>
             {modalOpen && modalType === 'questens' && <Questens onClose={closeModal} />}
             {modalOpen && modalType === 'dament' && <Dament onClose={closeModal} />}
             <div id='mesk' onClick={handleClick}>
-            <span style={{ position: 'absolute', top: 100, right: 20, color: 'white', fontSize: "40px", fontWeight: '900', padding: '5px' }}>TOCH ME</span>
+                <span style={{ position: 'absolute', top: 100, right: 20, color: 'white', fontSize: "40px", fontWeight: '900', padding: '5px' }}>TOCH ME</span>
             </div>
             <div id='mesk-mobile'>
             </div>
